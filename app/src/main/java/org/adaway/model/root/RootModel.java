@@ -213,7 +213,7 @@ public class RootModel extends AdBlockModel {
     private void writeLoopbackToHosts(BufferedWriter writer) throws IOException {
         writer.write(LOCALHOST_IPV4 + " " + LOCALHOST_HOSTNAME);
         writer.newLine();
-        writer.write(LOCALHOST_IPV6 + " " + LOCALHOST_HOSTNAME);
+        writer.write(LOCALHOST_IPV6 + " ip6-" + LOCALHOST_HOSTNAME);
         writer.newLine();
     }
 
@@ -249,7 +249,7 @@ public class RootModel extends AdBlockModel {
         try (FileOutputStream fos = this.context.openFileOutput(DEFAULT_HOSTS_FILENAME, MODE_PRIVATE)) {
             // Write default localhost as hosts file
             String localhost = LOCALHOST_IPV4 + " " + LOCALHOST_HOSTNAME + LINE_SEPARATOR +
-                    LOCALHOST_IPV6 + " " + LOCALHOST_HOSTNAME + LINE_SEPARATOR;
+                    LOCALHOST_IPV6 + " ip6-" + LOCALHOST_HOSTNAME + LINE_SEPARATOR;
             fos.write(localhost.getBytes());
             // Copy generated hosts file to target location
             copyHostsFile(DEFAULT_HOSTS_FILENAME);
